@@ -1,0 +1,33 @@
+.plainCard {
+  margin-bottom: 16px;
+}
+
+.plainCardHeader {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  margin-bottom: 20px;
+}
+
+.plainCardTitle {
+  flex: auto;
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: var(--font-weight-medium);
+  font-size: 16px;
+  line-height: 1.5715;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.plainCardExtra {
+  margin-left: auto;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+}
+
+.plainCardBody {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 2px;
+}

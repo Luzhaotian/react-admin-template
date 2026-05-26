@@ -1,0 +1,37 @@
+.button {
+  background: none;
+  padding: 0;
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+  font-size: 14px;
+  border: none;
+  outline: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--primary-hover-color);
+  }
+
+  &[disabled] {
+    color: #b3b3b3;
+    background: none;
+    cursor: not-allowed;
+  }
+
+  &.dangerous {
+    color: var(--danger-color);
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--danger-hover-color);
+    }
+  }
+
+  :global {
+    .anticon-down {
+      font-size: 12px;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Admin Template</title>
+    <style>
+      #root-loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        font-size: 14px;
+        color: #999;
+      }
+      .root-loading-spinner {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+        border: 2px solid #eee;
+        border-top-color: #4d69ff;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+      }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div id="root-loading">
+        <div class="root-loading-spinner"></div>
+        <span>加载中...</span>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+.user-management {
+  padding: 24px;
+}
+
+.user-management .advanced-search {
+  margin-bottom: 16px;
+  padding: 24px;
+  background: #fafafa;
+  border-radius: 8px;
+}
+
+.user-management .opeartions {
+  margin-bottom: 16px;
+}

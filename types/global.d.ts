@@ -1,0 +1,7 @@
+type NonReadonly<T> = {
+  -readonly [P in keyof T]: T[P];
+};
+
+type RemoveIndexSignature<T> = {
+  [K in keyof T as string extends K ? never : number extends K ? never : K]: T[K];
+};

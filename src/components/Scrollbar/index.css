@@ -1,0 +1,5 @@
+.thumb {
+  cursor: pointer;
+  border-radius: inherit;
+  background-color: rgb(255 255 255 / 20%);
+}

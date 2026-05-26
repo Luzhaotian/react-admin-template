@@ -1,0 +1,27 @@
+/* stylelint-disable selector-class-pattern */
+.bordered {
+  :global {
+    .BaseTable__header-cell,
+    .BaseTable__row-cell {
+      padding-top: 8px;
+      padding-bottom: 8px;
+      border-right: 1px solid #eee;
+    }
+
+    .BaseTable__header-cell .BaseTable__sort-indicator {
+      font-family:
+        system-ui,
+        -apple-system,
+        'Segoe UI',
+        Roboto,
+        Ubuntu,
+        Cantarell,
+        'Noto Sans',
+        sans-serif,
+        'Apple Color Emoji',
+        'Segoe UI Emoji',
+        'Segoe UI Symbol',
+        'Noto Color emoji';
+    }
+  }
+}

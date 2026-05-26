@@ -1,0 +1,22 @@
+.exception {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+.content {
+  text-align: center;
+
+  & h2 {
+    margin-bottom: 15px;
+    font-size: 80px;
+    line-height: 1;
+    color: #434e59;
+  }
+
+  & p {
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+}
