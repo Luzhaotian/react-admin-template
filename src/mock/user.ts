@@ -47,3 +47,45 @@ export const mockFetchUserInfo = (token: string) => {
 export const mockFetchPermissions = () => {
   return ['dashboard', 'users', 'settings'];
 };
+
+export const mockGetGrowthDashboard = () => {
+  const today = new Date();
+  const dailyGrowth: { date: string; newUsers: number }[] = [];
+
+  // 生成近 7 天数据，整体微增长趋势，允许单日小幅回落
+  for (let i = 6; i >= 0; i--) {
+    const date = new Date(today);
+    date.setDate(date.getDate() - i);
+    const dateStr = date.toISOString().slice(0, 10);
+    const base = 90 + Math.floor((6 - i) * 8);
+    const jitter = Math.floor(Math.random() * 30) - 15;
+    const newUsers = Math.max(50, Math.min(200, base + jitter));
+    dailyGrowth.push({ date: dateStr, newUsers });
+  }
+
+  const todayNewUsers = dailyGrowth[6].newUsers;
+  const yesterdayNewUsers = dailyGrowth[5].newUsers;
+  const totalUsers = 24000 + Math.floor(Math.random() * 1000);
+  const dayOverDayGrowthRate = yesterdayNewUsers
+    ? Number((((todayNewUsers - yesterdayNewUsers) / yesterdayNewUsers) * 100).toFixed(1))
+    : 0;
+
+  const avgDailyNewUsers = Math.round(
+    dailyGrowth.reduce((sum, item) => sum + item.newUsers, 0) / 7
+  );
+
+  const prev7DaysNewUsers = 75 + Math.floor(Math.random() * 20);
+  const prev7DaysAvg = prev7DaysNewUsers;
+  const weekOverWeekGrowthRate = prev7DaysAvg
+    ? Number((((avgDailyNewUsers - prev7DaysAvg) / prev7DaysAvg) * 100).toFixed(1))
+    : 0;
+
+  return {
+    dailyGrowth,
+    todayNewUsers,
+    totalUsers,
+    dayOverDayGrowthRate,
+    avgDailyNewUsers,
+    weekOverWeekGrowthRate,
+  };
+};

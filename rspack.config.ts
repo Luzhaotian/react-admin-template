@@ -35,31 +35,12 @@ const config: Configuration = {
       },
       {
         test: /\.module\.css$/,
-        use: [
-          { loader: 'style-loader' },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              modules: {
-                mode: 'local',
-                exportOnlyLocals: false,
-                localIdentName: isProd ? '[hash:base64:8]' : '[path][name]__[local]',
-              },
-            },
-          },
-          { loader: 'postcss-loader' },
-        ],
+        type: 'css/module',
       },
       {
         test: /\.css$/,
         exclude: /\.module\.css$/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          { loader: 'postcss-loader' },
-        ],
-        sideEffects: true,
+        type: 'css/auto',
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
@@ -94,7 +75,7 @@ const config: Configuration = {
           if (!url.startsWith('/api/v1/user')) {
             return next();
           }
-          const { mockLogin, mockFetchUserInfo, mockFetchPermissions } = require('./src/mock/user');
+          const { mockLogin, mockFetchUserInfo, mockFetchPermissions, mockGetGrowthDashboard } = require('./src/mock/user');
           const method = req.method.toLowerCase();
           let body = '';
           req.on('data', (chunk: any) => {
@@ -120,6 +101,12 @@ const config: Configuration = {
                 const permissions = mockFetchPermissions();
                 res.writeHead(200, { 'Content-Type': 'application/json' });
                 res.end(JSON.stringify({ status: 'SUCCESS', data: permissions }));
+                return;
+              }
+              if (method === 'get' && url === '/api/v1/user/growth-dashboard') {
+                const data = mockGetGrowthDashboard();
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ status: 'SUCCESS', data }));
                 return;
               }
               next();

@@ -1,7 +1,7 @@
 import { Card, Space, type TableProps } from 'antd';
 import StandardTable from '../StandardTable';
 import useSearchTable from './useSearchTable';
-import styles from './index.css';
+import * as styles from './index.module.css';
 
 interface SearchTableProps<T> extends TableProps<T> {
   search: React.ReactNode;

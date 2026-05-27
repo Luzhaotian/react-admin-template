@@ -1,6 +1,7 @@
 import axios from '@/shared/axios';
 import type { UserInfo } from '@/stores/user';
 import type { UserQueryParams, UserFormData, UserListResult, CreateUserResult, UpdateUserResult, DeleteUserResult } from '@/types/user';
+import type { UserGrowthDashboardResult } from '@/types/dashboard';
 
 export interface LoginParams {
   username: string;
@@ -52,4 +53,9 @@ export async function deleteUser(userId: string): Promise<DeleteUserResult> {
 /** 批量删除用户 */
 export async function batchDeleteUsers(userIds: string[]): Promise<DeleteUserResult> {
   return axios.post('/user/batch-delete', { userIds }) as unknown as DeleteUserResult;
+}
+
+/** 获取用户增长看板数据 */
+export async function getUserGrowthDashboard(): Promise<UserGrowthDashboardResult> {
+  return axios.get<UserGrowthDashboardResult>('/user/growth-dashboard');
 }
